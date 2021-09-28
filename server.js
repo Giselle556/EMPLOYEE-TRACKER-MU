@@ -19,3 +19,11 @@
 console.clear();
 const inquirer = require("inquirer");
 const express = require("express");
+
+const PORT = process.env.PORT || 3023;
+const app = express();
+
+const Employee = require('./lib/employee.js');
+const Role = require("./lib/role.js");
+const Department = require("./lib/department.js");
+
