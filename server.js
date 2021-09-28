@@ -20,6 +20,16 @@ console.clear();
 const inquirer = require("inquirer");
 const express = require("express");
 
+const db = mysql.createConnection(
+    {
+        host: 'localhost',
+        user: 'root',
+        password:'',
+        database: 'employees'
+    },
+    console.log("connected to employee db")
+);
+
 const PORT = process.env.PORT || 3023;
 const app = express();
 
