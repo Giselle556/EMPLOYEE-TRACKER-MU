@@ -17,6 +17,7 @@
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 
 console.clear();
+const mysql = require('mysql12');
 const inquirer = require("inquirer");
 
 const db = mysql.createConnection(
@@ -29,8 +30,6 @@ const db = mysql.createConnection(
     console.log("connected to employee db")
 );
 
-const PORT = process.env.PORT || 3023;
-const app = express();
 
 
 inquirer
@@ -42,3 +41,35 @@ inquirer
         choices: ["View All Employees", "Add Employee", "Update Employee Role", "View All Roles", "Add Role", "View All Departments", "Add Department"]
     }
 ])
+
+.then((data) => {
+    switch(data){
+        case "View All Employees":
+            db.query('SELECT * FROM employee', function (err,res)  {
+                console.table(results);
+            });
+            break;
+            case "Add Employee":
+                db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?)')
+                break;
+                case "Update Employee Role":
+            db.query('SELECT first_name, last_name, role_id, FROM employee, UPDATE employee, SET role_id (?) ')
+            break;
+        case "View All Roles":
+            db.query('SELECT * FROM role', function (err, results) {
+                console.table(results);
+            });
+        case "Add Role":
+            db.query('INSERT INTO role (title, salary, department_id) VALUES (?)')
+            break;
+        case "View All Departments":
+            db.query('SELECT id.name FROM department', function (err, results) {
+                console.table(results);
+            });
+        case "Add Departments":
+            db.query('INSERT INTO department (name) VALUES (?)')
+            default:
+                    
+
+    }
+});
