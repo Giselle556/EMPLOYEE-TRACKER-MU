@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "inquirer": "^8.1.5"
+    "console.table": "^0.10.0",
+    "inquirer": "^8.1.5",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.2"
   }
 }
